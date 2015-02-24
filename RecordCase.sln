@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.UI", "Code\WPF\R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.Controls", "Code\WPF\RecordCase.WPFControls\RecordCase.Controls.csproj", "{8903B3AB-E78B-4AD7-8496-752E46120EA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.TestsCommon", "RecordCase.TestsCommon\RecordCase.TestsCommon.csproj", "{3F797406-D28C-4EAE-9489-751AF963C48F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.TestsCommon", "Tests\RecordCase.TestsCommon\RecordCase.TestsCommon.csproj", "{3F797406-D28C-4EAE-9489-751AF963C48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

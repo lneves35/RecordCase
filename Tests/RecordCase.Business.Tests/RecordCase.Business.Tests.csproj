@@ -78,7 +78,7 @@
       <Project>{130d21d4-6b59-4556-9725-b33a4b9c4d58}</Project>
       <Name>RecordCase.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RecordCase.TestsCommon\RecordCase.TestsCommon.csproj">
+    <ProjectReference Include="..\RecordCase.TestsCommon\RecordCase.TestsCommon.csproj">
       <Project>{3f797406-d28c-4eae-9489-751af963c48f}</Project>
       <Name>RecordCase.TestsCommon</Name>
     </ProjectReference>
