@@ -1,32 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RecordCase.Model.Entities;
-using RecordCase.Model.Entities.Types;
+﻿using System.Data.Entity;
+using RecordCase.Model.Interfaces;
 
 namespace RecordCase.Model
 {
-    public class RecordCaseInitializer : CreateDatabaseIfNotExists<RecordCaseContext>
+    public class RecordCaseInitializer<T> : CreateDatabaseIfNotExists<T> where T : RecordCaseContext
     {
-        protected override void Seed(RecordCaseContext context)
+        private ISeeder Seeder { get; set; }
+
+        public RecordCaseInitializer(ISeeder seeder)
         {
-            List<Genre> defaultGenres = new List<Genre>();
-            defaultGenres.Add(new Genre() {Name = "Disco"});
-            defaultGenres.Add(new Genre() { Name = "House" });
-            defaultGenres.Add(new Genre() { Name = "Techno" });
-            defaultGenres.ForEach(g=>context.Genres.Add(g));
+            Seeder = seeder;
+        }
 
-
-            List<Inches> defaultInches = new List<Inches>();
-            defaultInches.Add(new Inches() { Name = "7''" });
-            defaultInches.Add(new Inches() { Name = "10''" });
-            defaultInches.Add(new Inches() { Name = "12''" });
-            defaultInches.ForEach(i => context.Inches.Add(i));
-            
+        
+        protected override void Seed(T context)
+        {
             base.Seed(context);
+
+            if (Seeder!=null)
+                Seeder.Seed(context);            
         }
     }
 }

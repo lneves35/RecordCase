@@ -15,7 +15,7 @@ namespace RecordCase.Repository
         public LocalRepository(RecordCaseContext dbContext) : base(dbContext)
         {
             //Load All Entities To Local
-            dbContext.LoadAllTables();            
+            dbContext.LoadAllTables();     
         }
 
         override public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)

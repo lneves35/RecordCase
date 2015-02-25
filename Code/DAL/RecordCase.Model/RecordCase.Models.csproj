@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\Locations\DriveLetterLocation.cs" />
     <Compile Include="Entities\Locations\HardDriveLocation.cs" />
     <Compile Include="Entities\Locations\VinylLocation.cs" />
     <Compile Include="Entities\MusicFile.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Entities\MusicTrackInstance.cs" />
     <Compile Include="Entities\Types\Genre.cs" />
     <Compile Include="Entities\Types\Inches.cs" />
+    <Compile Include="Interfaces\ISeeder.cs" />
     <Compile Include="RecordCaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordCaseInitializer.cs" />

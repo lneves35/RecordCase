@@ -5,21 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecordCase.Model.Entities
 {
-    public enum LocationType
-    {
-        Virtual,
-        Physical
-    }
-
     public class Location
     {
         public int LocationId { get; set; }
         
         [Required]
-        public String Name { get; set; }
-
-        [Required]
-        public LocationType? LocationType { get; set; }
+        public String Name { get; set; }        
 
         [ForeignKey("ParentLocation")]
         public int? ParentLocationId { get; set; }

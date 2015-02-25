@@ -1,13 +1,22 @@
 ﻿using System.Data.Entity;
 using RecordCase.Model.Entities;
 using RecordCase.Model.Entities.Types;
+using RecordCase.Model.Interfaces;
 
 namespace RecordCase.Model
 {
     public class RecordCaseContext : DbContext
     {
-        public RecordCaseContext(string connectionString) : base(connectionString)
+        public RecordCaseContext(string connectionString, ISeeder seeder)
+            : base(connectionString)
+        {            
+            Database.SetInitializer(new RecordCaseInitializer<RecordCaseContext>(seeder));             
+        }
+
+        protected RecordCaseContext(string connectionString)
+            : base(connectionString)
         {
+            
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -15,7 +24,7 @@ namespace RecordCase.Model
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
 
-            Database.SetInitializer(new RecordCaseInitializer());
+                       
         }
         
 

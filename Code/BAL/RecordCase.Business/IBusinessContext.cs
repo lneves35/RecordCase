@@ -9,5 +9,7 @@ namespace RecordCase.Business
     public interface IBusinessContext : IDisposable
     {
         IEnumerable<Genre> GetAllGenres();
+
+        void AddLocation(Location location);
     }
 }
