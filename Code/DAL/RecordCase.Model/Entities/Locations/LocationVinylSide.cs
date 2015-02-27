@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RecordCase.Model.Entities.Types;
 
 namespace RecordCase.Model.Entities.Locations
 {
-    public class VinylLocation
+    [Table("LocationVinylSide")]
+    public class LocationVinylSide: Location
     {
-        public int InchesId { get; set; }
-
-        public Inches Inches { get; set; }
+        public char Side { get; set; }
     }
 }

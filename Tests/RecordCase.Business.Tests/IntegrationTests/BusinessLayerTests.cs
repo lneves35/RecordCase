@@ -19,10 +19,6 @@ namespace RecordCase.Business.Tests.IntegrationTests
             Assert.IsTrue(genres.Any(), "Got all genres");
         }
 
-
-
-        
-
         [Test]
         public void AddLocation_ReturnsTrue()
         {
@@ -37,6 +33,6 @@ namespace RecordCase.Business.Tests.IntegrationTests
            
             //Assert
             Assert.IsTrue(location.LocationId != 0, "Location Added");
-        }
+        }        
     }
 }

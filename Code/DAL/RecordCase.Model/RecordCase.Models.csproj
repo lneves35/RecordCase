@@ -58,12 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Location.cs" />
-    <Compile Include="Entities\Locations\DriveLetterLocation.cs" />
-    <Compile Include="Entities\Locations\HardDriveLocation.cs" />
-    <Compile Include="Entities\Locations\VinylLocation.cs" />
+    <Compile Include="Entities\Locations\LocationDriveLetter.cs" />
+    <Compile Include="Entities\Locations\LocationFolder.cs" />
+    <Compile Include="Entities\Locations\LocationHardDrive.cs" />
+    <Compile Include="Entities\Locations\LocationVinyl.cs" />
+    <Compile Include="Entities\Locations\LocationVinylSide.cs" />
     <Compile Include="Entities\MusicFile.cs" />
     <Compile Include="Entities\MusicTrack.cs" />
     <Compile Include="Entities\MusicTrackInstance.cs" />
+    <Compile Include="Entities\MusicTrackInstances\MusicTrackInstanceVinyl.cs" />
     <Compile Include="Entities\Types\Genre.cs" />
     <Compile Include="Entities\Types\Inches.cs" />
     <Compile Include="Interfaces\ISeeder.cs" />

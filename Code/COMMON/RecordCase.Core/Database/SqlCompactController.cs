@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using RecordCase.Core.Database.Exceptions;
+using RecordCase.Common.Exceptions;
 using RecordCase.Core.Database.Interfaces;
 using RecordCase.Core.Properties;
 

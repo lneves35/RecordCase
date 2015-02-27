@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using RecordCase.Common.Exceptions;
+using RecordCase.Core.Collections.Extensions;
 using RecordCase.Core.Database.Interfaces;
-using RecordCase.Core.Exceptions;
 using RecordCase.Model.Entities;
+using RecordCase.Model.Entities.Locations;
 using RecordCase.Model.Entities.Types;
 
 namespace RecordCase.Business
@@ -28,7 +29,8 @@ namespace RecordCase.Business
             {
                 StringBuilder sb = new StringBuilder();
 
-                foreach (var failure in ex.EntityValidationErrors)
+
+                ex.EntityValidationErrors.ForEachInEnumerable(failure =>
                 {
                     sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
                     foreach (var error in failure.ValidationErrors)
@@ -36,7 +38,8 @@ namespace RecordCase.Business
                         sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
                         sb.AppendLine();
                     }
-                }
+                });
+                
                 // Add the original exception as the innerException
                 throw new DbEntityValidationException("Entity Validation Failed - errors follow:\n" + sb, ex);
             }
@@ -89,7 +92,8 @@ namespace RecordCase.Business
 
         public void AddLocation(Location location)
         {
-            //Do some validation (except for integrity restrictions)
+            //Do some validation (except for integrity restrictions)            
+            location.Validate();
 
             //Add to database
             InvokeRepositoryUpdate<Location>(rep => rep.Add(location));

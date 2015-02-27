@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\..\..\packages\LinqKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -54,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Database\Exceptions\RecordCaseDatabaseException.cs" />
     <Compile Include="Database\Extensions\DbContextExtensions.cs" />
     <Compile Include="Database\Interfaces\ISqlCompactController.cs" />
     <Compile Include="Database\Interfaces\IRepository.cs" />
@@ -66,8 +68,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Errors.resx</DependentUpon>
     </Compile>
-    <Compile Include="Exceptions\RecordCaseException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\ValidationException.cs" />
+    <Compile Include="Validation\ValidationRule.cs" />
+    <Compile Include="Validation\ValidationRulesEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Errors.resx">
@@ -76,7 +80,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RecordCase.Common\RecordCase.Common.csproj">
+      <Project>{AC021A2F-C894-4777-935E-89F99BD6429D}</Project>
+      <Name>RecordCase.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -44,7 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="FakeRepository.cs" />
+    <Compile Include="FakeUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Code\COMMON\RecordCase.Core\RecordCase.Core.csproj">
+      <Project>{1D1B3725-BEE2-4699-8445-AB3D8B26D665}</Project>
+      <Name>RecordCase.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

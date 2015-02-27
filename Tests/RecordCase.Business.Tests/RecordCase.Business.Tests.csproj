@@ -58,14 +58,18 @@
     <Compile Include="IntegrationTests\BusinessLayerTests.cs" />
     <Compile Include="IntegrationTests\RecordCaseContextForTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\BaseBusinessUnitTests.cs" />
+    <Compile Include="UnitTests\BusinessContextTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UnitTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Code\BAL\RecordCase.Business\RecordCase.Business.csproj">
       <Project>{0c1c2924-750a-4768-ab8a-05c1526e3293}</Project>
       <Name>RecordCase.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Code\COMMON\RecordCase.Common\RecordCase.Common.csproj">
+      <Project>{AC021A2F-C894-4777-935E-89F99BD6429D}</Project>
+      <Name>RecordCase.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Code\COMMON\RecordCase.Core\RecordCase.Core.csproj">
       <Project>{1d1b3725-bee2-4699-8445-ab3d8b26d665}</Project>

@@ -9,7 +9,7 @@ using RecordCase.Core.Database.Interfaces;
 using RecordCase.Model;
 namespace RecordCase.Repository
 {
-    public class LocalRepository<TEntity> : BaseRepository<TEntity>, IRepository<TEntity> 
+    public class LocalRepository<TEntity> : BaseRepository<TEntity>
         where TEntity : class
     {
         public LocalRepository(RecordCaseContext dbContext) : base(dbContext)

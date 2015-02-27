@@ -8,7 +8,7 @@ namespace RecordCase.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private bool useLocalRepository;
+        private readonly bool useLocalRepository;
 
         private bool disposed;
         

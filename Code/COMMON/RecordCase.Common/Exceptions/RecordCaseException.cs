@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace RecordCase.Core.Exceptions
+namespace RecordCase.Common.Exceptions
 {
     public class RecordCaseException: Exception
     {

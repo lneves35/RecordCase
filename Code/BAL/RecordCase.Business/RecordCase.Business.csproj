@@ -47,11 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessContext.cs" />
+    <Compile Include="EntityValidationExtensions.cs" />
     <Compile Include="IBusinessContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordCaseContextSeeder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\COMMON\RecordCase.Common\RecordCase.Common.csproj">
+      <Project>{AC021A2F-C894-4777-935E-89F99BD6429D}</Project>
+      <Name>RecordCase.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\COMMON\RecordCase.Core\RecordCase.Core.csproj">
       <Project>{1d1b3725-bee2-4699-8445-ab3d8b26d665}</Project>
       <Name>RecordCase.Core</Name>
