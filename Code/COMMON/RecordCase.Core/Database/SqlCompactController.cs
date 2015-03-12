@@ -30,7 +30,7 @@ namespace RecordCase.Core.Database
             var builder = new SqlCeConnectionStringBuilder()
             {
                 Password = password ?? string.Empty,
-                DataSource = filename
+                DataSource = filename,                
             };
 
 

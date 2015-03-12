@@ -14,7 +14,7 @@ namespace RecordCase.Repository
         
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        private RecordCaseContext Context { get; set; }
+        public DbContext Context { get; set; }
 
         public UnitOfWork(RecordCaseContext context, bool useLocalRepository)
         {
@@ -34,7 +34,7 @@ namespace RecordCase.Repository
             {
                 repo = useLocalRepository
                     ? new LocalRepository<TEntity>(Context) as IRepository<TEntity>
-                    : new RemoteRepository<TEntity>(Context) as IRepository<TEntity>;
+                    : new RemoteRepository<TEntity>(Context);
                 repositories.Add(typeof(TEntity), repo);
             }
             return repo;
@@ -56,5 +56,7 @@ namespace RecordCase.Repository
 
             disposed = true;
         }
+
+        
     }
 }

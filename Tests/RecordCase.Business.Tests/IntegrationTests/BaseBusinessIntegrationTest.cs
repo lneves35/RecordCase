@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using NUnit.Framework;
 using RecordCase.Core.Database;
 using RecordCase.Core.Database.Interfaces;
@@ -28,6 +22,9 @@ namespace RecordCase.Business.Tests.IntegrationTests
         {
             if (dInfo.Exists)
                 dInfo.Empty();
+            Directory.CreateDirectory(_mp3Dir);
+            FileIO.WriteToFile(Mp3FullPath, TestsCommon.Properties.Resources.FileMp3);
+
             connString = dBcontroller.CreateDb(DbFullPath);
             dbContext = new RecordCaseContextForTests(connString, RecordCaseContextSeeder.GetSeeder());
             unitOfWork = new UnitOfWork(dbContext, true);

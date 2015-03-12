@@ -1,8 +1,20 @@
-﻿<Window x:Class="RecordCase.UI.MainWindow"
+﻿<mui:ModernWindow x:Class="RecordCase.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        Title="MainWindow" 
+        Height="350" 
+        Width="525"
+        ContentSource="/Pages/Collections.xaml"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+    >
+    
+    
+    <mui:ModernWindow.MenuLinkGroups>
+        <mui:LinkGroup DisplayName="Collections" >
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="Manage" Source="/Pages/Collections.xaml"/>
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+    </mui:ModernWindow.MenuLinkGroups>
+</mui:ModernWindow>

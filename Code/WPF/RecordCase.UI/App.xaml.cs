@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -15,8 +16,15 @@ namespace RecordCase.WPF.UI
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            log4net.Config.XmlConfigurator.Configure();            
+                       
             base.OnStartup(e);
+
+            log4net.Config.XmlConfigurator.Configure(); 
+
+            if (RecordCase.UI.Properties.Settings.Default.DatabaseCollection == null)
+                RecordCase.UI.Properties.Settings.Default.DatabaseCollection = new StringCollection();
+
+            
         }
     }
 }

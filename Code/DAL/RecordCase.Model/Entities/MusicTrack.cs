@@ -21,7 +21,7 @@ namespace RecordCase.Model.Entities
 
         public string Key { get; set; }
 
-        public int? Bpm { get; set; }
+        public uint? Bpm { get; set; }
 
         public byte? Rating { get; set; }        
 
@@ -29,9 +29,6 @@ namespace RecordCase.Model.Entities
 
         [Required]
         public DateTime DateAdded { get; set; }
-
-        [Required]
-        public DateTime DateCreated { get; set; }
         
         public DateTime? DatePlayed { get; set; }
 

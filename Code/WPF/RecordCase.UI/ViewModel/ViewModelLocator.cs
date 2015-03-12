@@ -30,18 +30,9 @@ namespace RecordCase.UI.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
+           
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<CollectionsViewModel>();
         }
 
         public MainViewModel Main
@@ -51,6 +42,16 @@ namespace RecordCase.UI.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
+
+        public CollectionsViewModel Collections
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CollectionsViewModel>();
+            }
+        }
+
+        
         
         public static void Cleanup()
         {

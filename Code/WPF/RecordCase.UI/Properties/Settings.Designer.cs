@@ -22,5 +22,16 @@ namespace RecordCase.UI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection DatabaseCollection {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["DatabaseCollection"]));
+            }
+            set {
+                this["DatabaseCollection"] = value;
+            }
+        }
     }
 }

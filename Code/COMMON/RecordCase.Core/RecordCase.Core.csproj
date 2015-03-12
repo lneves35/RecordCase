@@ -49,6 +49,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8854.1\lib\net40\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,17 +59,27 @@
   <ItemGroup>
     <Compile Include="Collections\Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Database\Extensions\DbContextExtensions.cs" />
+    <Compile Include="Database\Interfaces\IRemoteRepository.cs" />
     <Compile Include="Database\Interfaces\ISqlCompactController.cs" />
     <Compile Include="Database\Interfaces\IRepository.cs" />
     <Compile Include="Database\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Database\SqlCompactController.cs" />
+    <Compile Include="Enums\Utils.cs" />
     <Compile Include="Filesystem\DirectoryInfoExtensions.cs" />
+    <Compile Include="Filesystem\FileIO.cs" />
     <Compile Include="Properties\Errors.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Errors.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\ComputerManager.cs" />
+    <Compile Include="System\WMI\Entities\ComputerSystem.cs" />
+    <Compile Include="System\WMI\Entities\DiskPartition.cs" />
+    <Compile Include="System\WMI\Entities\DiskDrive.cs" />
+    <Compile Include="System\WMI\Entities\LogicalDisk.cs" />
+    <Compile Include="System\WMI\WMIManager.cs" />
+    <Compile Include="Validation\IValidationRulesEngine.cs" />
     <Compile Include="Validation\ValidationException.cs" />
     <Compile Include="Validation\ValidationRule.cs" />
     <Compile Include="Validation\ValidationRulesEngine.cs" />

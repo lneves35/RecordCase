@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using RecordCase.Model.Entities;
+using RecordCase.Model.Entities.Locations;
+using RecordCase.Model.Entities.MusicTrackInstances;
+using RecordCase.TestsCommon.Properties;
 
 namespace RecordCase.Business.Tests.IntegrationTests
 {
@@ -20,19 +24,16 @@ namespace RecordCase.Business.Tests.IntegrationTests
         }
 
         [Test]
-        public void AddLocation_ReturnsTrue()
+        public void ImportMusicTrack_DoesntThrow()
         {
-            //Arrange
-            Location location = new Location()
-            {
-                Name = "teste"
-            };
+            businessContext.ImportMusicTrack(new FileInfo(Mp3FullPath));
+        }
 
-            //Act
-            businessContext.AddLocation(location);
-           
-            //Assert
-            Assert.IsTrue(location.LocationId != 0, "Location Added");
-        }        
+        [Test]
+        public void ImportMusicTracks_DoesntThrow()
+        {
+            businessContext.ImportMusicTracks("E:\\5 - CLOSED\\_2\\DISCO", true);
+        }
+        
     }
 }

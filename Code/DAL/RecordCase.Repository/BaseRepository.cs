@@ -9,45 +9,17 @@ using RecordCase.Core.Database.Interfaces;
 
 namespace RecordCase.Repository
 {
-    public abstract class BaseRepository<TEntity> : IRepository<TEntity>
+    public abstract class BaseRepository<TEntity>
         where TEntity : class
     {
-        protected RecordCaseContext DbContext { get; set; }
+        protected DbContext DbContext { get; set; }
 
         protected DbSet<TEntity> EntitySet { get; set; }
 
-        protected BaseRepository(RecordCaseContext dbContext)
+        protected BaseRepository(DbContext dbContext)
         {
             DbContext = dbContext;
-            EntitySet = DbContext.Set<TEntity>();
+            EntitySet = dbContext.Set<TEntity>();
         }
-
-        public TEntity Add(TEntity entity)
-        {
-            var ret = EntitySet.Add(entity);
-            DbContext.SaveChanges();
-            return ret;
-        }
-
-        public void Remove(TEntity entity)
-        {
-            if (DbContext.Entry(entity).State == EntityState.Detached)
-            {
-                EntitySet.Attach(entity);
-            }
-            EntitySet.Remove(entity);
-            DbContext.SaveChanges();
-        }
-
-        public TEntity Update(TEntity entity)
-        {
-            EntitySet.Attach(entity);
-            DbContext.Entry(entity).State = EntityState.Modified;
-            DbContext.SaveChanges();
-            return entity;
-        }
-        
-        public abstract IEnumerable<TEntity> Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate);
-
     }
 }

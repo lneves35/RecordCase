@@ -5,7 +5,7 @@ using NUnit.Framework;
 using RecordCase.Core.Filesystem;
 
 
-namespace RecordCase.Core.Tests.IntegrationTests.Filesystem
+namespace RecordCase.Core.Tests.IntegrationTests.FileSystem
 {
     [TestFixture]
     public class DirectoryInfoExtensionsTests : BaseCoreIntegrationTest

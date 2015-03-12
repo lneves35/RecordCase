@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RecordCase.Core.System;
 using RecordCase.Model;
+using RecordCase.Model.Entities;
+using RecordCase.Model.Entities.Locations;
 using RecordCase.Model.Entities.Types;
 using RecordCase.Model.Interfaces;
 
@@ -27,18 +30,23 @@ namespace RecordCase.Business
 
         public void Seed(RecordCaseContext ctx)
         {
-            List<Genre> defaultGenres = new List<Genre>();
+            var defaultGenres = new List<Genre>();
             defaultGenres.Add(new Genre() { Name = "Disco" });
             defaultGenres.Add(new Genre() { Name = "House" });
             defaultGenres.Add(new Genre() { Name = "Techno" });
             defaultGenres.ForEach(g => ctx.Genres.Add(g));
 
 
-            List<Inches> defaultInches = new List<Inches>();
+            var defaultInches = new List<Inches>();
             defaultInches.Add(new Inches() { Name = "7''" });
             defaultInches.Add(new Inches() { Name = "10''" });
             defaultInches.Add(new Inches() { Name = "12''" });
             defaultInches.ForEach(i => ctx.Inches.Add(i));
+
+            var defaultLocations = new List<Location>();
+            var rootLocation = new Location() {UniqueName = "Record Case"};
+            defaultLocations.Add(rootLocation);
+            defaultLocations.ForEach(i => ctx.Locations.Add(i));
         }
     }
 }

@@ -10,7 +10,7 @@ using RecordCase.Common.Exceptions;
 namespace RecordCase.Core.Validation
 {
 
-    public class ValidationRulesEngine
+    public class ValidationRulesEngine : IValidationRulesEngine
     {
         private readonly Dictionary<Type, object> validationRules;
 

@@ -11,7 +11,6 @@ namespace RecordCase.Model.Entities.Locations
     [Table("LocationDriveLetter")]
     public class LocationDriveLetter: Location
     {
-        [Required]
-        public string Letter { get; set; }
+        
     }
 }

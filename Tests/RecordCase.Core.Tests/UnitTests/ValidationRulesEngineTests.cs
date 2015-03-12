@@ -38,8 +38,8 @@ namespace RecordCase.Core.Tests.UnitTests
         {
             //Arrange
             var truePredicate = PredicateBuilder.True<object>();
-            string errMsg = "Predicate returned false";
-            object o = new object();
+            const string errMsg = "Predicate returned false";
+            var o = new object();
 
             //Act
             valEngine.AddValidation(truePredicate, errMsg);

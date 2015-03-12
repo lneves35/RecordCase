@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AB8921F4-2755-42F5-AE7B-74072B8BB955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.Models.Tests", "Tests\RecordCase.Model.Tests\RecordCase.Models.Tests.csproj", "{3173084E-A623-448F-B152-1025869D8C61}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordCase.Core.Tests", "Tests\RecordCase.Core.Tests\RecordCase.Core.Tests.csproj", "{4CAA4287-9D5D-487D-BAE9-30E9338089FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{F3F18C52-9C39-4F22-977C-F2D829A525D0}"
@@ -43,10 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3173084E-A623-448F-B152-1025869D8C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3173084E-A623-448F-B152-1025869D8C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3173084E-A623-448F-B152-1025869D8C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3173084E-A623-448F-B152-1025869D8C61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CAA4287-9D5D-487D-BAE9-30E9338089FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CAA4287-9D5D-487D-BAE9-30E9338089FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CAA4287-9D5D-487D-BAE9-30E9338089FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -92,7 +86,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3173084E-A623-448F-B152-1025869D8C61} = {AB8921F4-2755-42F5-AE7B-74072B8BB955}
 		{4CAA4287-9D5D-487D-BAE9-30E9338089FA} = {AB8921F4-2755-42F5-AE7B-74072B8BB955}
 		{571C04D9-5719-432C-BD32-15EF8EDB19FD} = {AB8921F4-2755-42F5-AE7B-74072B8BB955}
 		{3F797406-D28C-4EAE-9489-751AF963C48F} = {AB8921F4-2755-42F5-AE7B-74072B8BB955}
