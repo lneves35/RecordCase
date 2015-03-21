@@ -7,6 +7,13 @@ namespace RecordCase.UI.ViewModel
 {    
     public class MainViewModel : ViewModelBase
     {
-        
+        public RelayCommand CloseCommand
+        {
+            get
+            {                
+                return WPF.UI.App.CloseCommand;
+            }
+
+        }
     }
 }

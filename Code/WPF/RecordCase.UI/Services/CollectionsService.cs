@@ -1,36 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RecordCase.CollectionModels;
-using RecordCase.Core.Extensions;
-using RecordCase.Core.Filesystem;
+using RecordCase.Collections;
+using RecordCase.Collections.Entities;
 using RecordCase.Core.System;
-using RecordCase.Repository;
-using RecordCase.UI.Entities;
 
 namespace RecordCase.UI.Services
 {
-    public class CollectionsService
+    public static class CollectionsService
     {
-        public static List<CollectionMetadata> RecordCollections { get; set; }
-
         private static string collectionsMetadataFilename = AppProps.AppDataFolder + "collections.dat";
 
-
-        static CollectionsService()
+        private static ICollectionsContext collectionsContext;
+        private static ICollectionsContext CollectionsContext
         {
-            LoadCollectionMetadata();
+            get
+            {
+                if(collectionsContext==null)
+                    collectionsContext = new CollectionsContext(collectionsMetadataFilename);
+                return collectionsContext;
+            }
         }
 
-           
-
-        public CollectionMetadata AddCollection()
+        private static ObservableCollection<CollectionMetadata> collections;
+        public static ObservableCollection<CollectionMetadata> Collections
         {
-
+            get
+            {
+                if (collections == null)
+                    collections = new ObservableCollection<CollectionMetadata>(CollectionsContext.LoadCollectionMetadata());
+                return collections;
+            }            
         }
 
+        public static void AddRecordCollection(CollectionMetadata collection)
+        {
+            Collections.Add(collection);
+        }
+
+        public static void SaveRecordCollection()
+        {
+            CollectionsContext.SaveCollectionMetadata(Collections.ToList());
+        }
     }
 }

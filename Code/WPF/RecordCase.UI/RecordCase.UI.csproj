@@ -176,6 +176,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\BAL\RecordCase.Collections\RecordCase.Collections.csproj">
+      <Project>{3E0718BB-6FAE-4279-9646-3C3211AAF725}</Project>
+      <Name>RecordCase.Collections</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\COMMON\RecordCase.Core\RecordCase.Core.csproj">
       <Project>{1D1B3725-BEE2-4699-8445-AB3D8B26D665}</Project>
       <Name>RecordCase.Core</Name>
