@@ -16,7 +16,7 @@ namespace RecordCase.Repository
 
         public DbContext Context { get; set; }
 
-        public UnitOfWork(RecordCaseContext context, bool useLocalRepository)
+        public UnitOfWork(DbContext context, bool useLocalRepository)
         {
             Context = context;
             this.useLocalRepository = useLocalRepository;

@@ -31,7 +31,7 @@ namespace RecordCase.Business
 
         public FileFormatParserProvider FileFormatParserProvider { get; set; }
 
-        public IUnitOfWork UnitOfWork { get; set; }
+        public IUnitOfWork RecordCaseUnitOfWork { get; set; }
 
         private T InvokeUpdateOrInsert<T>(Func<IRepository<T>, Func<T,T>> func, T ent)
             where T : class
@@ -40,7 +40,7 @@ namespace RecordCase.Business
             {
                 if (ValidationRulesEngine!=null)
                     ValidationRulesEngine.ValidateOrThrow(ent);
-                var rep = UnitOfWork.GetRepository<T>();
+                var rep = RecordCaseUnitOfWork.GetRepository<T>();
                 return func(rep)(ent);
             }
             catch (DbEntityValidationException ex)
@@ -63,9 +63,9 @@ namespace RecordCase.Business
             }
         }
 
-        public BusinessContext(IUnitOfWork unitOfWork)
+        public BusinessContext(IUnitOfWork recordCaseUnitOfWork)
         {
-            UnitOfWork = unitOfWork;
+            RecordCaseUnitOfWork = recordCaseUnitOfWork;
             ValidationRulesEngine = new ValidationRulesEngine();
             ValidationRulesEngine.AddValidation(PredicateBuilder.True<Location>().And(l => l.ParentLocation!=null), "Location must have parent.");
 
@@ -87,8 +87,8 @@ namespace RecordCase.Business
             if (disposed || !disposing)
                 return;
 
-            if (UnitOfWork != null)
-                UnitOfWork.Dispose();
+            if (RecordCaseUnitOfWork != null)
+                RecordCaseUnitOfWork.Dispose();
 
             disposed = true;
         }
@@ -97,7 +97,7 @@ namespace RecordCase.Business
 
         private IEnumerable<T> GetEntities<T>(Expression<Func<T, bool>> predicate) where T:class
         {
-            return UnitOfWork.GetRepository<T>().Find(predicate);
+            return RecordCaseUnitOfWork.GetRepository<T>().Find(predicate);
         }
 
         private IEnumerable<T> GetEntities<T>() where T : class
@@ -165,7 +165,7 @@ namespace RecordCase.Business
             //Import from current folder
             DirectoryInfo dirInfo = new DirectoryInfo(directoryPath);
             dirInfo.GetFilesFromDirectory(traverse, "*.mp3").ForEach(f => ImportMusicTrack(f));
-            UnitOfWork.Context.SaveChanges();
+            RecordCaseUnitOfWork.Context.SaveChanges();
         }
         
     }

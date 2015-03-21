@@ -5,16 +5,25 @@
         Title="MainWindow" 
         Height="350" 
         Width="525"
-        ContentSource="/Pages/Collections.xaml"
+        ContentSource="/Pages/CollectionManager.xaml"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
     >
-    
+    <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="Settings" Source="/Pages/Settings.xaml" />
+    </mui:ModernWindow.TitleLinks>
     
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="Collections" >
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="Manage" Source="/Pages/Collections.xaml"/>
+                <mui:Link DisplayName="manage" Source="/Pages/CollectionManager.xaml"/>
+                <mui:Link DisplayName="add" Source="/Pages/AddCollection.xaml"/>
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="advanced" >
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="log" Source="/Pages/Collections.xaml"/>
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
     </mui:ModernWindow.MenuLinkGroups>
+    
 </mui:ModernWindow>

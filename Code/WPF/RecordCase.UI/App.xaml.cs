@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using log4net;
+using RecordCase.UI.Properties;
 
 namespace RecordCase.WPF.UI
 {
@@ -14,15 +15,15 @@ namespace RecordCase.WPF.UI
     /// </summary>
     public partial class App : Application
     {
+
+        
         protected override void OnStartup(StartupEventArgs e)
         {
                        
             base.OnStartup(e);
-
             log4net.Config.XmlConfigurator.Configure(); 
 
-            if (RecordCase.UI.Properties.Settings.Default.DatabaseCollection == null)
-                RecordCase.UI.Properties.Settings.Default.DatabaseCollection = new StringCollection();
+            
 
             
         }

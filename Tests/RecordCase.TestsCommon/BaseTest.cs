@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace RecordCase.TestsCommon
@@ -15,9 +11,12 @@ namespace RecordCase.TestsCommon
         protected static DirectoryInfo dInfo = new DirectoryInfo(_testDir);
         
         protected const string DbFilename = "dummyDb.sdf";
+        protected const string CollectionsFilename = "collections.dat";
         protected const string Mp3Filename = "Nick Curly - Sun City (Original Mix).mp3";
+
         protected static string DbFullPath = String.Format("{0}\\{1}", _testDir, DbFilename);
         protected static string Mp3FullPath = String.Format("{0}\\{1}", _mp3Dir, Mp3Filename);
+        protected static string CollectionsFullPath = String.Format("{0}\\{1}", _testDir, CollectionsFilename);
 
 
     }

@@ -18,9 +18,9 @@ namespace RecordCase.UI.Pages
     /// <summary>
     /// Interaction logic for Collections.xaml
     /// </summary>
-    public partial class Collections : UserControl
+    public partial class CollectionManager : UserControl
     {
-        public Collections()
+        public CollectionManager()
         {
             InitializeComponent();
         }

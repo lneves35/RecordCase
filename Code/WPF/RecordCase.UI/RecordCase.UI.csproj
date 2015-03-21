@@ -103,16 +103,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pages\Collections.xaml.cs">
-      <DependentUpon>Collections.xaml</DependentUpon>
+    <Compile Include="Controls\Collections\CollectionList.xaml.cs">
+      <DependentUpon>CollectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CollectionManager.xaml.cs">
+      <DependentUpon>CollectionManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RecordCaseCollection.xaml.cs">
       <DependentUpon>RecordCaseCollection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\CollectionsService.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="ViewModel\CollectionsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\Collections\CollectionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,7 +133,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Collections.xaml">
+    <Page Include="Pages\CollectionManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +183,10 @@
     <ProjectReference Include="..\..\DAL\RecordCase.Model\RecordCase.Models.csproj">
       <Project>{e062046b-461a-423f-ab0f-006c4848e6da}</Project>
       <Name>RecordCase.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAL\RecordCase.Repository\RecordCase.Repository.csproj">
+      <Project>{130D21D4-6B59-4556-9725-B33A4B9C4D58}</Project>
+      <Name>RecordCase.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

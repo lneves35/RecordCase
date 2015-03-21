@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using LinqKit;
-using RecordCase.Common.Exceptions;
 
 namespace RecordCase.Core.Validation
 {
@@ -89,8 +86,8 @@ namespace RecordCase.Core.Validation
                     var expression = item.GetType().GetProperty("Expression").GetValue(item);
                     var errorMessage = (string)item.GetType().GetProperty("ErrorMessage").GetValue(item);
                         
-                    //Invoke
-                    var method = (typeof(Extensions)).GetMethods().Single(m => m.Name == "Invoke" && m.GetParameters().Count() == 2);
+                    //Invoke Predicate
+                    var method = (typeof(LinqKit.Extensions)).GetMethods().Single(m => m.Name == "Invoke" && m.GetParameters().Count() == 2);
 
                     var res = (bool)method.MakeGenericMethod(kvp.Key, typeof(bool)).Invoke(null, new object[] { expression, o });
 

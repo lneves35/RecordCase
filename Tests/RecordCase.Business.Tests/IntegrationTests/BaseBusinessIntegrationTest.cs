@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using NUnit.Framework;
+using RecordCase.Collections;
 using RecordCase.Core.Database;
 using RecordCase.Core.Database.Interfaces;
 using RecordCase.Core.Filesystem;
@@ -16,6 +17,7 @@ namespace RecordCase.Business.Tests.IntegrationTests
         private IUnitOfWork unitOfWork;
         private RecordCaseContext dbContext;
         protected IBusinessContext businessContext;
+        protected ICollectionsContext collectionsContext;
 
         [SetUp]
         public void Setup()
@@ -29,6 +31,7 @@ namespace RecordCase.Business.Tests.IntegrationTests
             dbContext = new RecordCaseContextForTests(connString, RecordCaseContextSeeder.GetSeeder());
             unitOfWork = new UnitOfWork(dbContext, true);
             businessContext = new BusinessContext(unitOfWork);
+            collectionsContext = new CollectionsContext(CollectionsFullPath);
         }
 
         [TearDown]
