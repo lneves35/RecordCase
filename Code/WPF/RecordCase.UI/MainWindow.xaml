@@ -23,7 +23,7 @@
         <mui:LinkGroup DisplayName="Collections" >
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="manage" Source="/Pages/CollectionManager.xaml"/>
-                <mui:Link DisplayName="add" Source="/Pages/AddCollection.xaml"/>
+                <mui:Link DisplayName="add" Source="/Pages/CollectionAdd.xaml"/>
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="advanced" >

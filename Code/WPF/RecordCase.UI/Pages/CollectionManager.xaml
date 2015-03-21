@@ -12,44 +12,14 @@
              DataContext="{Binding Collections, Source={StaticResource Locator}}"
              >
     <ScrollViewer>
-        
-        
         <StackPanel MinWidth="200" Orientation="Vertical">
-           
+            <mui:BBCodeBlock BBCode="[url=/Pages/CollectionAdd.xaml]Add new...[/url]" />
             
-            <StackPanel.Resources>
-            <Style TargetType="StackPanel">
-                <Setter Property="Orientation" Value="Horizontal" />
-                <Setter Property="Margin" Value="0,0,0,4" />
-            </Style>
-            <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
-                <Setter Property="Width" Value="120" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
-            
-            
-                
-            </StackPanel.Resources>
-
             <!--Collection List-->
             <collections:CollectionList ItemsSource="{Binding Collections}"
                      Width="200"
                      Height="100"
                      Background="White"/>
-            
-            <!-- Add New Collection -->
-            <StackPanel>
-                <Label Content="Collection Name" Target="{Binding ElementName=TxtAddCollection}"/>
-                <TextBox x:Name="TxtAddCollection" Width="150" Text="{Binding AddCollectionText, Mode=OneWayToSource}"/>
-                <mui:ModernButton EllipseDiameter="20" IconWidth="10" IconHeight="10" IconData="{StaticResource AddIconData}" ToolTip="add" Padding="5,0,0,0">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click" >
-                            <command:EventToCommand CommandParameter="{Binding }" Command="{Binding AddCollectionCommand}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </mui:ModernButton>
-            </StackPanel>
-
         </StackPanel>
     </ScrollViewer>
 </UserControl>
