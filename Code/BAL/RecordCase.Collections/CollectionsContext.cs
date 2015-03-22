@@ -3,8 +3,8 @@ using System.IO;
 using LinqKit;
 using RecordCase.Collections.Entities;
 using RecordCase.Core.Filesystem;
-using RecordCase.Core.MVVM;
 using RecordCase.Core.Validation;
+using RecordCase.Core.WPF;
 
 namespace RecordCase.Collections
 {

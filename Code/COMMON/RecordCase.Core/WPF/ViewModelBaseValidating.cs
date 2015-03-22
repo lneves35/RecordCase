@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using RecordCase.Core.Validation;
 
-namespace RecordCase.Core.MVVM
+namespace RecordCase.Core.WPF
 {
     public class ViewModelBaseValidating : ViewModelBase, IDataErrorInfo
     {

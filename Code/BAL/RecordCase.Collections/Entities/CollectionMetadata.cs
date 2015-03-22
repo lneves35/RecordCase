@@ -1,5 +1,6 @@
 ﻿using System;
-using RecordCase.Core.MVVM;
+using System.Windows.Media.Imaging;
+using RecordCase.Core.WPF;
 
 namespace RecordCase.Collections.Entities
 {
@@ -38,5 +39,23 @@ namespace RecordCase.Collections.Entities
                 }
             }
         }        
+
+        private byte[] _image;
+        public byte[] Image
+        {
+            get
+            {
+                return _image;
+            }
+            set
+            {
+                if (_image != value)
+                {
+                    _image = value;
+                    RaisePropertyChanged("Image");
+                }
+            }
+        }        
+
     }
 }
