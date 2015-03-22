@@ -12,10 +12,13 @@ namespace RecordCase.Core.Validation
         public Expression<Func<T, bool>> Expression { get; set; }
         public string ErrorMessage { get; set; }
 
-        public ValidationRule(Expression<Func<T, bool>> expression, string errorMessage)
+        public string Property { get; set; }
+
+        public ValidationRule(Expression<Func<T, bool>> expression, string errorMessage, string property)
         {
             Expression = expression;
             ErrorMessage = errorMessage;
+            Property = property;
         }
     }
 }

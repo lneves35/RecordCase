@@ -42,6 +42,9 @@
     <Reference Include="EntityFramework.SqlServerCompact">
       <HintPath>..\..\packages\EntityFramework.SqlServerCompact.6.1.2\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
     </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\..\Code\WPF\RecordCase.UI\bin\Debug\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>

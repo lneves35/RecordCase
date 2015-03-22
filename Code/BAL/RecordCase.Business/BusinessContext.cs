@@ -14,6 +14,7 @@ using RecordCase.Common.Exceptions;
 using RecordCase.Core.Collections.Extensions;
 using RecordCase.Core.Database.Interfaces;
 using RecordCase.Core.Filesystem;
+using RecordCase.Core.MVVM;
 using RecordCase.Core.System;
 using RecordCase.Core.Validation;
 using RecordCase.Model.Entities;
@@ -68,6 +69,8 @@ namespace RecordCase.Business
             RecordCaseUnitOfWork = recordCaseUnitOfWork;
             ValidationRulesEngine = new ValidationRulesEngine();
             ValidationRulesEngine.AddValidation(PredicateBuilder.True<Location>().And(l => l.ParentLocation!=null), "Location must have parent.");
+            ViewModelBaseValidating.AddValidationRulesEngine(ValidationRulesEngine);
+
 
             FileFormatParserProvider = new FileFormatParserProvider();
             FileFormatParserProvider.Add(MediaFormatExtension.Mp3, new FileFormatParserMp3());

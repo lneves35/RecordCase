@@ -36,6 +36,7 @@ namespace RecordCase.UI.Services
 
         public static void AddRecordCollection(CollectionMetadata collection)
         {
+            collection.Created = DateTime.Now;
             Collections.Add(collection);
         }
 

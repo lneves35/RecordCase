@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LinqKit;
 using RecordCase.Collections.Entities;
 using RecordCase.Core.Filesystem;
+using RecordCase.Core.MVVM;
+using RecordCase.Core.Validation;
 
 namespace RecordCase.Collections
 {
@@ -16,6 +15,10 @@ namespace RecordCase.Collections
         public CollectionsContext(string collectionsMetadataFilename)
         {
             this.collectionsMetadataFilename = collectionsMetadataFilename;
+
+            var ValidationRulesEngine = new ValidationRulesEngine();
+            ValidationRulesEngine.AddValidation(PredicateBuilder.True<CollectionMetadata>().And(c => !string.IsNullOrWhiteSpace(c.Name)), "Collection name required.", "Name");
+            ViewModelBaseValidating.AddValidationRulesEngine(ValidationRulesEngine);
         }
 
         public void SaveCollectionMetadata(List<CollectionMetadata> collections)

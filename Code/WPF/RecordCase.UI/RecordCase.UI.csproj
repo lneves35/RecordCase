@@ -116,6 +116,7 @@
       <DependentUpon>RecordCaseCollection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\CollectionsService.cs" />
+    <Compile Include="Services\Navigator.cs" />
     <Compile Include="Services\SettingsService.cs" />
     <Compile Include="ViewModel\CollectionsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

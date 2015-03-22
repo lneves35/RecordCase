@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RecordCase.Collections.Entities;
@@ -17,34 +18,40 @@ namespace RecordCase.UI.ViewModel
             }
         }
 
-        private string addCollectionText;
-        public string AddCollectionText
+
+        private CollectionMetadata _newCollectionMetadata;
+        public CollectionMetadata NewCollectionMetadata
         {
             get
             {
-                return addCollectionText;
+                if (_newCollectionMetadata == null)
+                    _newCollectionMetadata = new CollectionMetadata();
+                return _newCollectionMetadata;
             }
 
             set
             {
-                addCollectionText = value;
-                RaisePropertyChanged("AddCollectionText");
+                if (_newCollectionMetadata != value)
+                {
+                    _newCollectionMetadata = value;
+                    RaisePropertyChanged("NewCollectionMetadata");
+                }
+
             }
+
+
         }
 
-        private RelayCommand addCollectionCommand;
-        public RelayCommand AddCollectionCommand
+        private RelayCommand<FrameworkElement> addCollectionCommand;
+        public RelayCommand<FrameworkElement> AddCollectionCommand
         {
             get
             {
-                return addCollectionCommand ?? (addCollectionCommand = new RelayCommand(() =>
+                return addCollectionCommand ?? (addCollectionCommand = new RelayCommand<FrameworkElement>((o) =>
                 {
-                    var collection = new CollectionMetadata()
-                    {
-                        Name = AddCollectionText,
-                        Created = DateTime.Now
-                    };
-                    CollectionsService.AddRecordCollection(collection);
+                    CollectionsService.AddRecordCollection(NewCollectionMetadata);
+                    NewCollectionMetadata = new CollectionMetadata();
+                    Navigator.Navigate(Page.CollectionManager, o);
                 }));
             }
 

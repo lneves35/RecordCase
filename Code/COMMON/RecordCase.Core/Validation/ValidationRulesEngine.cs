@@ -16,7 +16,7 @@ namespace RecordCase.Core.Validation
             validationRules = new Dictionary<Type, object>();            
         }
 
-        public void AddValidation<T>(ValidationRule<T> valRule)
+        private void AddValidation<T>(ValidationRule<T> valRule)
         {
             var keyVal = validationRules.FirstOrDefault(kv => kv.Key == typeof(T));
 
@@ -29,14 +29,19 @@ namespace RecordCase.Core.Validation
             }
         }
 
+        public void AddValidation<T>(Expression<Func<T, bool>> expression, string errorMessage, string property)
+        {
+            AddValidation(new ValidationRule<T>(expression, errorMessage, property));
+        }
+
         public void AddValidation<T>(Expression<Func<T, bool>> expression, string errorMessage)
         {
-            AddValidation(new ValidationRule<T>(expression, errorMessage));
+            AddValidation(new ValidationRule<T>(expression, errorMessage, null));
         }
 
         public void ValidateOrThrow(object obj)
         {
-            Validate(obj, true);
+            Validate(obj, true, null);
         }
 
         /// <summary>
@@ -47,7 +52,12 @@ namespace RecordCase.Core.Validation
         /// <returns></returns>
         public List<string> Validate(object o)
         {
-            return Validate(o, false);
+            return Validate(o, false, null);
+        }
+
+        public List<string> ValidateProperty(object o, string property)
+        {
+            return Validate(o, false, property);
         }
 
         /// <summary>
@@ -69,7 +79,7 @@ namespace RecordCase.Core.Validation
             return valRules != null && valRules.Any();
         }
 
-        private List<string> Validate(object o, bool throws)
+        private List<string> Validate(object o, bool throws, string property)
         {
             List<string> errors = new List<string>();
             //Get all validators from runtime type and from basetypes
@@ -82,25 +92,42 @@ namespace RecordCase.Core.Validation
                     //Validator[i]
                     object item = itemIndexing.Invoke(kvp.Value, new object[] {i});
 
-                    //Validator[i].Expression
-                    var expression = item.GetType().GetProperty("Expression").GetValue(item);
-                    var errorMessage = (string)item.GetType().GetProperty("ErrorMessage").GetValue(item);
-                        
-                    //Invoke Predicate
-                    var method = (typeof(LinqKit.Extensions)).GetMethods().Single(m => m.Name == "Invoke" && m.GetParameters().Count() == 2);
 
-                    var res = (bool)method.MakeGenericMethod(kvp.Key, typeof(bool)).Invoke(null, new object[] { expression, o });
+                    //Validator[i].Property
+                    var prop = item.GetType().GetProperty("Property").GetValue(item);
 
-                    if (!res)
+                    if (property == (string)prop)
                     {
-                        if (throws)
-                            throw new ValidationException(errorMessage);
-                        else
-                            errors.Add(errorMessage);
+                        //Validator[i].Expression
+                        var expression = item.GetType().GetProperty("Expression").GetValue(item);
+
+                        //Validator[i].ErrorMessage
+                        var errorMessage = (string) item.GetType().GetProperty("ErrorMessage").GetValue(item);
+
+                        //Invoke Predicate
+                        var method =
+                            (typeof (LinqKit.Extensions)).GetMethods()
+                                .Single(m => m.Name == "Invoke" && m.GetParameters().Count() == 2);
+
+                        var res =
+                            (bool)
+                                method.MakeGenericMethod(kvp.Key, typeof (bool))
+                                    .Invoke(null, new object[] {expression, o});
+
+                        if (!res)
+                        {
+                            if (throws)
+                                throw new ValidationException(errorMessage);
+                            else
+                                errors.Add(errorMessage);
+                        }
                     }
                 }
             });
             return errors;
         }
+
+
+        
     }
 }

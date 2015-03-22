@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\..\WPF\RecordCase.UI\bin\Debug\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
     <Reference Include="LinqKit">
       <HintPath>..\..\..\packages\LinqKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
     </Reference>
@@ -69,6 +72,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Filesystem\DirectoryInfoExtensions.cs" />
     <Compile Include="Filesystem\FileIO.cs" />
+    <Compile Include="MVVM\ViewModelBaseValidating.cs" />
     <Compile Include="Properties\Errors.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
