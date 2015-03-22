@@ -96,7 +96,7 @@ namespace RecordCase.Core.Validation
                     //Validator[i].Property
                     var prop = item.GetType().GetProperty("Property").GetValue(item);
 
-                    if (property == (string)prop)
+                    if (property==null ||property == (string)prop)
                     {
                         //Validator[i].Expression
                         var expression = item.GetType().GetProperty("Expression").GetValue(item);

@@ -21,7 +21,14 @@ namespace RecordCase.Core.MVVM
 
         public virtual string Error
         {
-            get { return null; }
+            get
+            {
+                if (ValidationRulesEngines.Any())
+                {
+                    return ValidationRulesEngines.SelectMany(vre=>vre.Validate(this)).FirstOrDefault();
+                }
+                return null;
+            }
         }
 
         public virtual string this[string columnName]

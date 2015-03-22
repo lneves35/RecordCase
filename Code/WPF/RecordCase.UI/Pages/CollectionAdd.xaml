@@ -7,7 +7,7 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:command="http://www.galasoft.ch/mvvmlight"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="500"
       DataContext="{Binding Collections, Source={StaticResource Locator}}">
     <ScrollViewer>
         <StackPanel Orientation="Vertical">
@@ -24,7 +24,7 @@
             <!-- Add New Collection -->
             <StackPanel>
                 <Label Content="Collection Name" Target="{Binding ElementName=TxtAddCollection}"/>
-                <TextBox x:Name="TxtAddCollection" Width="150" Text="{Binding Path=NewCollectionMetadata.Name,Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                <TextBox x:Name="TxtAddCollection" Width="200" Text="{Binding Path=NewCollectionMetadata.Name, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
             </StackPanel>
             <Button ToolTip="add" Content="Add">
                 <i:Interaction.Triggers>
@@ -32,7 +32,6 @@
                         <command:EventToCommand CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" Command="{Binding AddCollectionCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                
             </Button>
         </StackPanel>
     </ScrollViewer>

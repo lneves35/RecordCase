@@ -52,7 +52,7 @@ namespace RecordCase.UI.ViewModel
                     CollectionsService.AddRecordCollection(NewCollectionMetadata);
                     NewCollectionMetadata = new CollectionMetadata();
                     Navigator.Navigate(Page.CollectionManager, o);
-                }));
+                }, (o) => String.IsNullOrEmpty(NewCollectionMetadata.Error)));
             }
 
         }
