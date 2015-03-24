@@ -10,7 +10,7 @@ namespace RecordCase.UI.Services
 {
     public static class CollectionsService
     {
-        private static string collectionsMetadataFilename = AppProps.AppDataFolder + "collections.dat";
+        private static string collectionsMetadataFilename = AppProps.AppDataFolder + "\\collections.dat";
 
         private static ICollectionsContext collectionsContext;
         private static ICollectionsContext CollectionsContext
@@ -38,6 +38,12 @@ namespace RecordCase.UI.Services
         {
             collection.Created = DateTime.Now;
             Collections.Add(collection);
+        }
+
+
+        public static void DeleteRecordCollection(CollectionMetadata collection)
+        {
+            Collections.Remove(collection);
         }
 
         public static void SaveRecordCollection()

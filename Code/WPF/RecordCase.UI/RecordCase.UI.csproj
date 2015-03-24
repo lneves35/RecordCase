@@ -104,8 +104,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AddImageControl.xaml.cs">
+      <DependentUpon>AddImageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Collections\CollectionList.xaml.cs">
       <DependentUpon>CollectionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\CollectionForm.xaml.cs">
+      <DependentUpon>CollectionForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Forms\FormContainer.xaml.cs">
+      <DependentUpon>FormContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CollectionAdd.xaml.cs">
       <DependentUpon>CollectionAdd.xaml</DependentUpon>
@@ -122,7 +131,19 @@
     <Compile Include="ViewModel\CollectionsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\AddImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Collections\CollectionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Forms\CollectionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Forms\FormContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,7 +171,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Images.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,7 +216,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\BAL\RecordCase.Collections\RecordCase.Collections.csproj">
       <Project>{3E0718BB-6FAE-4279-9646-3C3211AAF725}</Project>
@@ -201,6 +236,9 @@
       <Project>{130D21D4-6B59-4556-9725-B33A4B9C4D58}</Project>
       <Name>RecordCase.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using log4net;
+using RecordCase.Core.System;
 using RecordCase.UI.Properties;
 using RecordCase.UI.Services;
 
@@ -26,15 +28,12 @@ namespace RecordCase.WPF.UI
             }
 
         }
-        
-        protected override void OnStartup(StartupEventArgs e)
-        {
-                       
-            base.OnStartup(e);
-            log4net.Config.XmlConfigurator.Configure(); 
-            
 
-            
+        static App()
+        {
+            log4net.Config.XmlConfigurator.Configure();
+            if (!Directory.Exists(AppProps.AppDataFolder))
+                Directory.CreateDirectory(AppProps.AppDataFolder);
         }
 
         internal static void Close()

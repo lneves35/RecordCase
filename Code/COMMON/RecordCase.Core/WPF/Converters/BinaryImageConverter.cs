@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using RecordCase.Core.Extensions;
 
 namespace RecordCase.Core.WPF.Converters
 {
@@ -32,7 +33,11 @@ namespace RecordCase.Core.WPF.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, global::System.Globalization.CultureInfo culture)
         {
-            throw new NotImplementedException();
+            var bitmapImage = value as BitmapImage;
+
+            if (bitmapImage != null)
+                return bitmapImage.ToByteArray();
+            return null;
         }
     }
 }

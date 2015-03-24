@@ -23,6 +23,23 @@ namespace RecordCase.Collections.Entities
             }
         }
 
+        private string _notes;
+        public string Notes
+        {
+            get
+            {
+                return _notes;
+            }
+            set
+            {
+                if (_notes != value)
+                {
+                    _notes = value;
+                    RaisePropertyChanged("Notes");
+                }
+            }
+        }
+
         private DateTime _created;
         public DateTime Created
         {
