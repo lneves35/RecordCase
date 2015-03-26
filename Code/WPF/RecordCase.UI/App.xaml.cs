@@ -31,7 +31,7 @@ namespace RecordCase.WPF.UI
 
         static App()
         {
-            log4net.Config.XmlConfigurator.Configure();
+            //log4net.Config.XmlConfigurator.Configure();
             if (!Directory.Exists(AppProps.AppDataFolder))
                 Directory.CreateDirectory(AppProps.AppDataFolder);
         }

@@ -236,9 +236,16 @@
       <Project>{130D21D4-6B59-4556-9725-B33A4B9C4D58}</Project>
       <Name>RecordCase.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RecordCase.WPFControls\RecordCase.Controls.csproj">
+      <Project>{8903b3ab-e78b-4ad7-8496-752e46120ea9}</Project>
+      <Name>RecordCase.Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\form_bk.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,5 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <BitmapImage x:Key="BackgroundImage" UriSource="pack://application:,,,/Resources\Images\background.png"/>
     <BitmapImage x:Key="LogoImage" UriSource="pack://application:,,,/Resources\Images\logo.png"/>
+    <BitmapImage x:Key="FormsBackgroundImage" UriSource="pack://application:,,,/Resources\Images\form_bk.jpg"/>
+    
     <ImageBrush x:Key="BackgroundBrush" ImageSource="{StaticResource BackgroundImage}"></ImageBrush>
+    <ImageBrush x:Key="FormsBackgroundBrush" ImageSource="{StaticResource FormsBackgroundImage}" 
+                Viewport="0,0,128,128"
+        ViewportUnits="Absolute"
+        TileMode="Tile"
+        Stretch="None"
+        AlignmentX="Left"
+        AlignmentY="Top"></ImageBrush>
+
+
+    <VisualBrush x:Key="MagnifierImage" Stretch="None" Viewport="4,4,15,15" ViewportUnits="Absolute">
+        <VisualBrush.Visual>
+            <Path Fill="WhiteSmoke" Height="15" Stretch="Uniform" Data="{StaticResource MaginifyIconData}"/>
+        </VisualBrush.Visual>
+    </VisualBrush>
 </ResourceDictionary>

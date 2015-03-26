@@ -79,6 +79,7 @@
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Filesystem\DirectoryInfoExtensions.cs" />
     <Compile Include="Filesystem\FileIO.cs" />
+    <Compile Include="Utils\DeferredAction.cs" />
     <Compile Include="WPF\Converters\BinaryImageConverter.cs" />
     <Compile Include="WPF\ViewModelBaseValidating.cs" />
     <Compile Include="Properties\Errors.Designer.cs">

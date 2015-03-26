@@ -3,114 +3,209 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:forms="clr-namespace:RecordCase.UI.Controls.Forms"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:command="http://www.galasoft.ch/mvvmlight"
+             xmlns:text="clr-namespace:RecordCase.WPFControls.Text;assembly=RecordCase.WPFControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="300" d:DesignWidth="300"             
              >
-    <forms:FormContainer 
-        Title="Available Collections"
-        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" >
-        <ListBox 
-                ItemsSource="{Binding ItemsSource}"  
-                SelectedItem="{Binding SelectedItem}"
-                Margin="5 5 5 5"                
-                >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Margin="2" Height="75">
-                        <StackPanel.Background>
-                            <LinearGradientBrush StartPoint="0.0 ,0" EndPoint="1,1">
-                                <GradientStop Color="#FF44494F" Offset="0.0" />
-                                <GradientStop Color="#343434" Offset="0.4" />
-                            </LinearGradientBrush>
-                        </StackPanel.Background>
-                        
-                        <Image Source="{Binding Image, Converter={StaticResource BinaryImageConverter}, Mode=TwoWay, TargetNullValue={StaticResource LogoImage}}" Width="110"  Stretch="UniformToFill" Margin="3">
-                            <Image.Style>
-                                <Style TargetType="Image">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Image}" Value="{x:Null}">
-                                            <Setter Property="Opacity" Value="0.1" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Image.Style>
-                        </Image>
-
-
-                        <Canvas Width="190">
-                            <StackPanel Canvas.Left="0" Canvas.Top="10" >
-                                <!--<StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Opacity" Value="0.1"/>
+    <Border                     
+        BorderThickness="10"
+        CornerRadius="15"
+        Padding="2" 
+        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+        Background="#FF3A3D41"
+        >
+        <Border.Effect>
+            <DropShadowEffect />
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock Margin="10 10 10 10" FontSize="25" TextAlignment="Center" Text="Available Collections"/>
+                <Separator Background="#343434"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Background="{StaticResource FormsBackgroundBrush}">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                
+                <text:RcTextBox Margin="10 10 10 10" Filter="{Binding FilterText, Mode=OneWayToSource}">
+                    <text:RcTextBox.Style>
+                        <Style TargetType="text:RcTextBox">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=ItemsSource.Count}" Value="0">
+                                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </text:RcTextBox.Style>
+                </text:RcTextBox>
+                
+                <ListBox 
+                    ScrollViewer.CanContentScroll="False"
+                    Grid.Row="1"
+                    ItemsSource="{Binding ItemsSourceView}"  
+                    SelectedItem="{Binding SelectedItem}"
+                    Margin="5 5 5 5"     
+                    Name="list"
+                    MinWidth="360"
+                    >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Margin" Value="3"></Setter>
+                                        <Setter Property="Height" Value="95"></Setter>
+                                        <Setter Property="Width" Value="350"></Setter>
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                    <GradientStop Color="#FF525455" Offset="0.0" />
+                                                    <GradientStop Color="#343434" Offset="0.2" />
+                                                    <GradientStop Color="#343434" Offset="0.95" />
+                                                    <GradientStop Color="#FF525455" Offset="1" />
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=CommandPanel}" Value="True">
-                                                <DataTrigger.EnterActions>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Cursor" Value="Hand"/>
+                                                <Trigger.EnterActions>
                                                     <BeginStoryboard>
                                                         <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0"  Duration="0:0:0.3" />
+                                                            <DoubleAnimation Duration="0:0:0.300" To="110" Storyboard.TargetProperty="Height" />
                                                         </Storyboard>
                                                     </BeginStoryboard>
-                                                </DataTrigger.EnterActions>
-                                            </DataTrigger>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Duration="0:0:0.150" To="75" Storyboard.TargetProperty="Height" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </StackPanel.Style>-->
-                                <TextBlock Text="{Binding Name}" FontSize="18" Width="150" TextTrimming="CharacterEllipsis"/>
-                                <TextBlock Text="{Binding Created}" />
-                            </StackPanel>
-                            <StackPanel Canvas.Right="0" Canvas.Top="0" Orientation="Horizontal">
-                                <StackPanel.Style>
-                                    <Style TargetType="StackPanel">
-                                        <Setter Property="Opacity" Value="0"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="True">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </StackPanel.Style>
-
-                                <mui:ModernButton 
-                                    IconData="{StaticResource EditIconData}" 
-                                    ToolTip="Edit" 
-                                    CommandParameter="{Binding}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click" >
-                                            <command:EventToCommand
-                                                CommandParameter="{Binding }" 
-                                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.EditCommand}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-
-                                </mui:ModernButton>
+                                </Grid.Style>
                                 
-                                <mui:ModernButton 
-                                    IconData="{StaticResource DeleteIconData}" 
-                                    ToolTip="Delete" 
-                                    
-                                    CommandParameter="{Binding}">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Click" >
-                                            <command:EventToCommand
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                
+                                <!--Image-->
+                                <Image Source="{Binding Image, Converter={StaticResource BinaryImageConverter}, Mode=TwoWay, TargetNullValue={StaticResource LogoImage}}" 
+                                       Stretch="UniformToFill" 
+                                       Margin="8">
+                                    <Image.Style>
+                                        <Style TargetType="Image">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Image}" Value="{x:Null}">
+                                                    <Setter Property="Opacity" Value="0.1" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                                
+                                <!--Text-->
+                                <Canvas Grid.Column="1">
+                                    <StackPanel Canvas.Left="10" Canvas.Top="10" >
+                                        <TextBlock Text="{Binding Name}" FontSize="18" TextTrimming="CharacterEllipsis" Width="180"/>
+                                        <TextBlock Text="{Binding Created}" />
+                                    </StackPanel>
+                                    <StackPanel Canvas.Right="0" Canvas.Top="0" Orientation="Vertical" Margin="2">
+                                        <StackPanel.Style>
+                                            <Style TargetType="StackPanel">
+                                                <Setter Property="Opacity" Value="0"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="True">
+                                                        <DataTrigger.EnterActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1"  Duration="0:0:0.3" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.EnterActions>
+                                                        <DataTrigger.ExitActions>
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0"  Duration="0:0:0.3" />
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </DataTrigger.ExitActions>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </StackPanel.Style>
+                                        
+                                        <mui:ModernButton 
+                                            IconData="{StaticResource DeleteIconData}" 
+                                            ToolTip="Delete" 
+                                            CommandParameter="{Binding}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click" >
+                                                    <command:EventToCommand
                                                 CommandParameter="{Binding }" 
                                                 Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.DeleteCommand}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </mui:ModernButton>
+                                        
+                                        <mui:ModernButton 
+                                            IconData="{StaticResource EditIconData}" 
+                                            ToolTip="Edit" 
+                                            CommandParameter="{Binding}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click" >
+                                                    <command:EventToCommand
+                                                CommandParameter="{Binding }" 
+                                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.EditCommand}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </mui:ModernButton>
 
-                                </mui:ModernButton>
-
-                                
-                            </StackPanel>
-                            
-                        </Canvas>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-    </forms:FormContainer>
+                                        
+                                    </StackPanel>
+                                </Canvas>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
+                
+            </Grid>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=ItemsSource.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Hidden"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                
+                <Run>Viewing </Run>
+                <Run Text="{Binding Path=ItemsSourceView.Count, Mode=OneWay}"/>
+                <Run> out of </Run>
+                <Run Text="{Binding Path=ItemsSource.Count, Mode=OneWay}"> </Run>
+                <Run> Collections</Run>
+            </TextBlock>
+        </Grid>
+    </Border>
+    
 </UserControl>
